@@ -1,11 +1,42 @@
 import React from 'react'
-import { Text, View, StyleSheet, ImageBackground} from 'react-native'
+import { Text, View, StyleSheet, ImageBackground, FlatList} from 'react-native'
 import moment from 'moment'
 import 'moment/locale/pt-br'
 import todayImage from '../../assets/imgs/today.jpg'
 import commomStyles from '../commomStyles';
+import Task from '../components/Tasks'
 
 export default class Agenda extends React.Component {
+
+    state = {
+        tasks: [
+            { id: 1, desc: 'Comprar o curso React Native',
+                estimateAt: new Date(), doneAt: new Date()},
+            { id: 2, desc: 'Concluir curso React Native',
+                estimateAt: new Date(), doneAt: null},
+            { id: 3, desc: 'Comprar o curso React Native',
+                estimateAt: new Date(), doneAt: new Date()},
+            { id: 4, desc: 'Concluir curso React Native',
+                estimateAt: new Date(), doneAt: null},
+            { id: 5, desc: 'Comprar o curso React Native',
+                estimateAt: new Date(), doneAt: new Date()},
+            { id: 6, desc: 'Concluir curso React Native',
+                estimateAt: new Date(), doneAt: null},
+            { id: 7, desc: 'Comprar o curso React Native',
+                estimateAt: new Date(), doneAt: new Date()},
+            { id: 8, desc: 'Concluir curso React Native',
+                estimateAt: new Date(), doneAt: null},
+            { id: 9, desc: 'Comprar o curso React Native',
+                estimateAt: new Date(), doneAt: new Date()},
+            { id: 10, desc: 'Concluir curso React Native',
+                estimateAt: new Date(), doneAt: null},
+            { id: 11, desc: 'Comprar o curso React Native',
+                estimateAt: new Date(), doneAt: new Date()},
+            { id: 12, desc: 'Concluir curso React Native',
+                estimateAt: new Date(), doneAt: null},
+        ]
+    }
+
     render() {
         return (
         <View style={styles.container}>
@@ -16,9 +47,7 @@ export default class Agenda extends React.Component {
                 </View>
             </ImageBackground>
             <View style={styles.tasksContainer}>
-                <Text>Tarefa 1</Text>
-                <Text>Tarefa 2</Text>
-                <Text>Tarefa 3</Text>
+        <FlatList data={this.state.tasks} keyExtractor={e => `${e.id}`} renderItem={({ item }) => <Task {...item}></Task>}></FlatList>
             </View>
         </View>
         )
