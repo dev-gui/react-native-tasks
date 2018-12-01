@@ -27,7 +27,7 @@ export default props => {
             </TouchableWithoutFeedback>
             <View>
                 <Text style={[styles.description, descStyle]}>{props.desc}</Text>
-                <Text style={styles.date}>{moment(props.estimateAt).locale('pt-br').format('ddd, D [de] MMMM')}</Text>
+                <Text style={styles.date}>{moment(props.estimateAt).locale('pt-br').format('ddd, D [de] MMMM [de] YYYY')}</Text>
             </View>
         </View>
     )
