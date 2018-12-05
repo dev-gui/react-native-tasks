@@ -84,6 +84,11 @@ export default class Agenda extends React.Component {
         this.setState({ tasks, showAddTask: false }, this.filterTasks)
     }
 
+    deleteTask = id => {
+        const tasks = this.state.tasks.filter(task => task.id !== id)
+        this.setState({ tasks }, this.filterTasks)
+    }
+
     render() {
         return (
         <View style={styles.container}>
@@ -100,7 +105,7 @@ export default class Agenda extends React.Component {
                 </View>
             </ImageBackground>
             <View style={styles.tasksContainer}>
-                <FlatList data={this.state.visibleTasks} keyExtractor={e => `${e.id}`} renderItem={({ item }) => <Task {...item} toggleTask={this.toggleTask}></Task>}></FlatList>
+                <FlatList data={this.state.visibleTasks} keyExtractor={e => `${e.id}`} renderItem={({ item }) => <Task {...item} toggleTask={this.toggleTask} onDelete={this.deleteTask}></Task>}></FlatList>
             </View>
             <ActionButton buttonColor={commomStyles.colors.today} onPress={() => this.setState({ showAddTask: true })}></ActionButton>
         </View>
